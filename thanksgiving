@@ -1,0 +1,28 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_lightsail_instance" "lightsail" {
+  name              = "Thanksmillionaire"
+  availability_zone = "us-east-1b"
+  blueprint_id      = "amazon_linux_2"
+  bundle_id         = "nano_3_0"
+  key_pair_name     = "week2"
+  
+}
+resource "aws_iam_group" "developers" {
+  name = "thanksgivingdeveloper"
+  path = "/users/"
+}
+
+resource "aws_iam_user" "lovely" {
+  name = "loverboy"
+}
